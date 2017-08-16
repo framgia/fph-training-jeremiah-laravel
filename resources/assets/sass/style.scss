@@ -1,0 +1,84 @@
+body {
+  background-color: #03A9F4;
+}
+
+.login-form {    
+  
+  box-shadow: 5px 5px 30px #888888;
+  background-color: white;
+  position: absolute;
+  margin-top: 250px;
+  width:    90%;
+  padding:  50px;
+  border-radius:  0px;
+
+  .input-form {
+    border-radius:  0px;
+  }
+
+  #button-login {
+    padding-left: 180px;
+    padding-right: 180px;
+    padding-top:  10px;
+    padding-bottom: 10px;
+    background-color: #03A9F4;
+    color:  white;
+    font-size:  20px;
+  }
+
+}
+
+.signin-form {    
+  
+  box-shadow: 5px 5px 30px #888888;
+  background-color: white;
+  position: absolute;
+  margin-top: 250px;
+  width:    90%;
+  padding:  50px;
+  border-radius:  0px;
+
+  .input-form{
+    border-radius:  0px;
+  }
+
+  #button-signin {
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top:  10px;
+    padding-bottom: 10px;
+    background-color: #03A9F4;
+    color:  white;
+    font-size:  20px;
+  }
+
+}
+
+#register {
+  position: absolute;
+  color: white;
+  font-size: 50px;
+  top:  100px;
+  left: 550px;
+  a {
+    color: green;
+  }
+}
+
+
+@media only screen and (max-width: 750px) {
+  .login-form {    
+    margin-top:  100px;
+    width:     93%;
+    padding:  50px;
+
+    #button-login {
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top:  10px;
+      padding-bottom: 10px;
+
+    }
+  }
+  
+}
