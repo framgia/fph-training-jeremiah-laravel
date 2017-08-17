@@ -1,90 +1,172 @@
+#navbar {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #03A9F4;
+  margin-bottom: 0;
+}
+
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
 body {
-  background-color: #03A9F4;
+    overflow-x: hidden;
 }
 
-.login-form {    
-  box-shadow: 5px 5px 30px #888888;
-  background-color: white;
-  position: absolute;
-  margin-top: 250px;
-  width:    90%;
-  padding:  50px;
-  border-radius:  0px;
-
-  .input-form {
-    border-radius:  0px;
-  }
-
-  #button-login {
-    padding-left: 180px;
-    padding-right: 180px;
-    padding-top:  10px;
-    padding-bottom: 10px;
-    background-color: #03A9F4;
-    color:  white;
-    font-size:  20px;
-  }
-
-  #button-login:hover {
-    background-color: #0288D1;
-  }
-
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
-.signin-form {    
-  box-shadow: 5px 5px 30px #888888;
-  background-color: white;
-  position: absolute;
-  margin-top: 250px;
-  width:    90%;
-  padding:  50px;
-  border-radius:  0px;
-
-  .input-form{
-    border-radius:  0px;
-  }
-
-  #button-signin {
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top:  10px;
-    padding-bottom: 10px;
-    background-color: #03A9F4;
-    color:  white;
-    font-size:  20px;
-  }
-
-  #button-signin:hover {
-    background-color: #0288D1;
-  }
-
+#wrapper.toggled {
+    padding-left: 250px;
 }
 
-#register {
-  position: absolute;
-  color: white;
-  font-size: 50px;
-  top:  100px;
-  left: 550px;
-  a {
-    color: green;
-  }
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
 }
 
 
-@media only screen and (max-width: 750px) {
-  .login-form {    
-    margin-top:  100px;
-    width:     93%;
-    padding:  50px;
+/* Sidebar Styles */
 
-    #button-login {
-      padding-left: 100px;
-      padding-right: 100px;
-      padding-top:  10px;
-      padding-bottom: 10px;
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
+    #sidebar-image {
+      padding: 10px;
     }
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #wrapper.toggled {
+        padding-left: 250px;
+    }
+    #sidebar-wrapper {
+        width: 0;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+//colors
+
+
+.card {
+  padding: 30px;
+
+  .card-header{
+    font-weight: 900; 
+    font-size: 20px;
   }
-  
+
+  .card-result{
+    font-weight: 900; 
+    font-size: 100px;
+  }
+}
+
+.red{
+  background-color: #f44336;
+}
+
+.blue{
+  background-color: #2196F3;
+}
+
+.yellow{
+  background-color: #FFEB3B;
+}
+
+.green {
+  background-color: #8BC34A;
+}
+
+.white-text {
+  color: white;
 }
