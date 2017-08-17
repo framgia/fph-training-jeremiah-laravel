@@ -60,8 +60,5 @@
             </div>
         </div>
     </div>
-    <div class="row" id="register">
-        <p>Please <a href="{{ route('register') }}">Register</a> if your not a user.</p>
-    </div>
 </div>
 @endsection
