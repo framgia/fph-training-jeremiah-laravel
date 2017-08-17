@@ -27,6 +27,10 @@ body {
   font-size: 20px;
 }
 
+.login-form #button-login:hover {
+  background-color: #0288D1;
+}
+
 .signin-form {
   -webkit-box-shadow: 5px 5px 30px #888888;
           box-shadow: 5px 5px 30px #888888;
@@ -50,6 +54,10 @@ body {
   background-color: #03A9F4;
   color: white;
   font-size: 20px;
+}
+
+.signin-form #button-signin:hover {
+  background-color: #0288D1;
 }
 
 #register {

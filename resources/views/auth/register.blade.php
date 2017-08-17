@@ -5,16 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="signin-form">
-                <!-- <div class="panel-heading">Register</div> -->
                 <div>
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+                    {{ Form::open(['route' => 'register', 'class' => 'form-horizontal']) }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            {{ Form::label('name', 'Name', ['class' => 'col-md-4 control-label']) }}
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control input-form" name="name" value="{{ old('name') }}" required autofocus>
+                                {{ Form::text('name', old('name'), ['class' => 'form-control input-form', 'required' => true]) }}
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -25,10 +23,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            {{ Form::label('email', 'E-Mail Address', ['class' => 'col-md-4 control-label']) }}
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control input-form" name="email" value="{{ old('email') }}" required>
+                                {{ Form::email('email', old('email'), ['class' => 'form-control input-form', 'required' => true]) }}
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -39,10 +37,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            {{ Form::label('password', 'Password', ['class' => 'col-md-4 control-label']) }}
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control input-form" name="password" required>
+                                {{ Form::password('password', ['class' => 'form-control input-form']) }}
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -53,21 +51,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            {{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'col-md-4 control-label']) }}
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control input-form" name="password_confirmation" required>
+                                {{ Form::password('password_confirmation', ['class' => 'form-control input-form', 'required' => true]) }}
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn" id="button-signin">
-                                    Register
-                                </button>
+                                {{ Form::submit('Register', ['class' => 'btn', 'id' => 'button-signin']) }}
                             </div>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
