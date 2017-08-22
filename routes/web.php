@@ -13,4 +13,24 @@
 
 Auth::routes();
 
+//link to dashboard/home
 Route::get('/', 'HomeController@index')->name('dashboard');
+
+//admin routes
+Route::prefix('admin')->group(function () {
+	//admin home page
+	Route::get('/', function () {
+		return view('admin.index');
+	});
+	//link to Roles Page
+	Route::get('roles', 'RoleController@index')->name('roles');
+
+	//link to Add Role Page
+	Route::get('roles/add', 'RoleController@create')->name('roles.add');
+
+	//action that stores role
+	Route::post('store', 'RoleController@store')->name('role.store');
+
+	//action that assign role
+	Route::post('assign', 'RoleController@assign')->name('assign.role');
+});

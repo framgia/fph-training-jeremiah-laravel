@@ -168,3 +168,45 @@ body {
   color: white;
 }
 
+#role-checkbox input[type=checkbox] {
+  visibility: hidden;
+}
+
+#role-checkbox label {
+  cursor: pointer;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#role-checkbox input[type=checkbox]:checked + label {
+  background-color: #BDBDBD;
+}
+
+.cool-form {
+  -webkit-box-shadow: 2px 2px 10px #888888;
+          box-shadow: 2px 2px 10px #888888;
+  background-color: white;
+  width: 90%;
+  padding: 50px;
+  border-radius: 0px;
+}
+
+.cool-form .input-form {
+  border-radius: 0px;
+}
+
+.cool-form #button {
+  padding-left: 180px;
+  padding-right: 180px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #03A9F4;
+  color: white;
+  font-size: 20px;
+}
+
+.cool-form #button:hover {
+  background-color: #0288D1;
+}
+

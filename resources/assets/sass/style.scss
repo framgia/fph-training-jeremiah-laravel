@@ -170,3 +170,50 @@ body {
 .white-text {
   color: white;
 }
+
+//checkboxes
+#role-checkbox{
+    
+    input[type=checkbox] {
+      visibility: hidden;
+    }
+
+    label {
+      cursor: pointer;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    input[type=checkbox]:checked + label {
+      background-color: #BDBDBD;
+    }
+}
+
+//forms
+.cool-form {    
+  box-shadow: 2px 2px 10px #888888;
+  background-color: white;
+  width:    90%;
+  padding:  50px;
+  border-radius:  0px;
+
+  .input-form {
+    border-radius:  0px;
+  }
+
+  #button{
+    padding-left: 180px;
+    padding-right: 180px;
+    padding-top:  10px;
+    padding-bottom: 10px;
+    background-color: #03A9F4;
+    color:  white;
+    font-size:  20px;
+  }
+
+  #button:hover {
+    background-color: #0288D1;
+  }
+
+}
