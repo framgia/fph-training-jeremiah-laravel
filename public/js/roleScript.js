@@ -76,7 +76,29 @@ module.exports = __webpack_require__(44);
 /***/ 44:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/framgia/Desktop/project/fph-training-jeremiah-laravel/resources/assets/js/roleScript.js'");
+$(document).ready(function () {
+    //assign funciton
+    $('#assign-btn').click(function (e) {
+        e.preventDefault();
+
+        var role_id = $('#role_id').val();
+        var CSRF_TOKEN = $('input[name="_token"]').val();
+
+        console.log('asdfasdf');
+        $.ajax({
+            url: '/assign',
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                role_id: role_id
+            },
+            success: function success(data) {
+                console.log(data.success);
+            },
+            error: function error() {}
+        });;
+    });
+});
 
 /***/ })
 

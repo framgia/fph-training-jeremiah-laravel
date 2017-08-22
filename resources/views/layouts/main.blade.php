@@ -72,10 +72,11 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
+        @include('layouts.sidebar')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
