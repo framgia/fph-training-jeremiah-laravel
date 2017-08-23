@@ -8,9 +8,9 @@
                     <span class="col-md-offset-2">Learned Words: 100</span>
                 </li>
                 <li><a href="#">Words</a></li>
-                <li><a href="#">Categories</a></li>
+                <li><a href="{{ route('category.index') }}">Categories</a></li>
                 <li><a href="#">Users</a></li>
-                <li><a href="{{ route('roles') }}">Roles</a></li>
+                <li><a href="{{ route('role.index') }}">Roles</a></li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

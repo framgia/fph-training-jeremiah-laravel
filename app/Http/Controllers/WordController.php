@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Role;
-use App\User;
 
-class RoleController extends Controller
+class WordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-        $users = User::all();
-
-        return view('admin.role.index', compact('roles', 'users'));
+        //
     }
 
     /**
@@ -28,7 +23,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.role.create');
+        //
     }
 
     /**
@@ -37,16 +32,9 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Role $role)
+    public function store(Request $request)
     {
-        $roleName = $request->rolename;
-        $roleDesc = $request->roledesc;
-
-        $role->role_name = $roleName;
-        $role->role_description = $roleDesc;
-        $role->save();
-
-        return redirect(route('role.index'))->with('status', 'You have successfully added a Role');
+        //
     }
 
     /**
@@ -81,17 +69,6 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    public function assign(Request $request)
-    {
-        $userId = User::find($request->users);
-        $roleId = $request->role_id;   
-
-        $userId->role_id = $roleId;
-        $userId->save();
-
-        return redirect('roles')->with('status', 'You have successfully assigned a Role');
     }
 
     /**

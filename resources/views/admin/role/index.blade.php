@@ -35,7 +35,7 @@
                                                     <h4 class="modal-title" id="myModalLabel">Users List</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{ Form::open(['route' => 'assign.role']) }}
+                                                    {{ Form::open(['route' => 'role.assign']) }}
                                                         <input type="text" name="role_id" value="{{ $role->id }}">
                                                         <div>
                                                             <select name="users" class="form-control">
@@ -59,7 +59,7 @@
                     </table>
                 </div>
             </div>
-            <a href="{{ route('roles.add') }}" class="btn btn-lg btn-success pull-right">Add Role</a>
+            <a href="{{ route('role.create') }}" class="btn btn-lg btn-success pull-right">Add Role</a>
         </div>
     </div>
 @endsection
