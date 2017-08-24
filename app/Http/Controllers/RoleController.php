@@ -13,12 +13,9 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $users, Role $roles)
     {
-        $roles = Role::all();
-        $users = User::all();
-
-        return view('admin.role.index', compact('roles', 'users'));
+        return view('admin.role.index', ['users' => $users->showAllUsers(), 'roles' => $roles->showAllRoles()]);
     }
 
     /**
@@ -39,12 +36,7 @@ class RoleController extends Controller
      */
     public function store(Request $request, Role $role)
     {
-        $roleName = $request->rolename;
-        $roleDesc = $request->roledesc;
-
-        $role->role_name = $roleName;
-        $role->role_description = $roleDesc;
-        $role->save();
+        $role->storeRole($request->rolename, $request->roledesc);
 
         return redirect(route('role.index'))->with('status', 'You have successfully added a Role');
     }
@@ -55,9 +47,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        //
+        return view('admin.role.show', compact('role'));
     }
 
     /**
@@ -66,9 +58,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('admin.role.edit', compact('role'));
     }
 
     /**
@@ -78,9 +70,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $role->updateRole($request->rolename, $request->rolecontent);
+
+        return redirect(route('role.show', ['role' => $role]))->with('status', 'Successfully updated Role');
     }
 
     public function assign(Request $request)
@@ -100,8 +94,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        return redirect(route('role.index'))->with('status', 'Successfully Deleted the role');
     }
 }

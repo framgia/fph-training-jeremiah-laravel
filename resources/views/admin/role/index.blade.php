@@ -21,7 +21,7 @@
                             @foreach ($roles as $role)
                             <tr>
                                 <td>{{ $role->id }}</td>
-                                <td>{{ $role->role_name }}</td>
+                                <td><a href="{{ route('role.show', $role->id) }}">{{ $role->role_name }}</a></td>
                                 <td>{{ $role->role_description }}</td>
                                 <td>
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target=".myModal{{ $role->id }}">Assign</button>

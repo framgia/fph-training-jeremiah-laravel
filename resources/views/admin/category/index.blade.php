@@ -18,21 +18,21 @@
                             </tr>
                         </thead>
                         <tbody>
-	                        @foreach ($categories as $category)
-	                            <tr>
-	                            	<td>{{ $category->id }}</td>
-	                            	<td><a href="{{ route('category.show', ['id' => $category->id]) }}">{{ $category->name }}</a></td>
-	                            	<td>{{ $category->content }}</td>
-	                            	<td>
-	                            		<a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-link"><i class="glyphicon glyphicon-pencil"></i></a>
-	                            		{{-- form --}}
-										{{ Form::open(array('route' => ['category.destroy', $category->id])) }}
-						                    {{ Form::hidden('_method', 'DELETE') }}
-						                    {{ Form::button('<i class="glyphicon glyphicon-trash"></i>', array('type' => 'submit', 'class' => 'btn btn-link')) }}
-						                {{ Form::close() }}
-	                            	</td>
-	                            </tr>
-	                        @endforeach
+                            @foreach ($categories as $category)
+                                <tr>
+                                    <td>{{ $category->id }}</td>
+                                    <td><a href="{{ route('category.show', ['id' => $category->id]) }}">{{ $category->name }}</a></td>
+                                    <td>{{ $category->content }}</td>
+                                    <td>
+                                        <a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-link"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        {{-- form --}}
+                                        {{ Form::open(array('route' => ['category.destroy', $category->id])) }}
+                                            {{ Form::hidden('_method', 'DELETE') }}
+                                            {{ Form::button('<i class="glyphicon glyphicon-trash"></i>', array('type' => 'submit', 'class' => 'btn btn-link')) }}
+                                        {{ Form::close() }}
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -73,11 +73,11 @@
             </div>
         </nav>
         @if (session('status'))
-        <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <i class="material-icons left">check_circle</i>
-            <span>{{ session('status') }}</span>
-        </div>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <i class="glyphicon glyphicon-ok-sign left"></i>
+                <span>{{ session('status') }}</span>
+            </div>
         @endif
         @include('layouts.sidebar')
     </div>

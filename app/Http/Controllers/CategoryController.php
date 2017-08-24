@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Categories;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -12,11 +12,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $categories =  Categories::all();
-
-        return view('admin.category.index', compact('categories'));    
+    public function index(Category $category)
+    {   
+        return view('admin.category.index')->with('categories', $category->showCategories());    
     }
 
     /**
@@ -35,15 +33,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
-        $categoryName = $request->name;
-        $categoryContent = $request->content;
-
-        $category = new Categories();
-        $category->name = $categoryName;
-        $category->content = $categoryContent;
-        $category->save();
+        $category->storeCategory($request->name, $request->content);
 
         return redirect(route('category.index'))->with('status', 'You have successfully added new Category!');
     }
@@ -54,9 +46,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        $category = Categories::find($id);
         return view('admin.category.show', compact('category'));
     }
 
@@ -66,10 +57,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category =  Categories::find($id);
-
         return view('admin.category.edit', compact('category'));
     }
 
@@ -80,17 +69,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        $categoryName = $request->name;
-        $categoryContent = $request->content;
+        $category->updateCategory($request->name, $request->content);
 
-        $category = Categories::find($id);
-        $category->name = $categoryName;
-        $category->content = $categoryContent;
-        $category->save();
-
-        return redirect(route('category.show', ['id' => $id]))->with('status', 'You have successfully added new Category!');
+        return redirect(route('category.show', ['category' => $category]))->with('status', 'You have successfully added new Category!');
     }
 
     /**
@@ -99,9 +82,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Categories::find($id);
         $category->delete();
 
         return redirect(route('category.index'))->with('status', 'Successfully Deleted the category');
