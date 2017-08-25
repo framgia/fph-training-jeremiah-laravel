@@ -10,18 +10,14 @@ class Category extends Model
         return $this->hasMany('App\Word');
     }
 
-    public function showCategories(){
-        return $this->all();
-    }
-
-    public function storeCategory ($name, $content){
+    public function storeCategory($name, $content){
         $this->name = $name;
         $this->content = $content;
 
         return $this->save();
     }
 
-    public function updateCategory ($name, $content){
+    public function updateCategory($name, $content){
         $this->name = $name;
         $this->content = $content;
         

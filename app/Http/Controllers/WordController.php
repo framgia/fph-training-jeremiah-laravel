@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Word;
+use App\Answer;
 
 class WordController extends Controller
 {
@@ -11,9 +14,9 @@ class WordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Word $word)
     {
-        //
+        return view('admin.word.index')->with('words', $word->all());
     }
 
     /**
@@ -23,7 +26,9 @@ class WordController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.word.create', compact('categories'));
     }
 
     /**
@@ -32,9 +37,14 @@ class WordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Answer $answer, Word $word)
     {
-        //
+        $word->storeWord($request->word, $request->category);
+        $answer->storeAnswer($request->answer, $word->id); 
+
+        $request->session()->flash('status', 'You have adde a new Word');
+        
+        return redirect(route('word.index'));
     }
 
     /**
@@ -54,9 +64,11 @@ class WordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Word $word)
     {
-        //
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.word.edit', compact('word', 'categories'));
     }
 
     /**
@@ -66,9 +78,14 @@ class WordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Word $word)
     {
-        //
+        $word->updateWord($request->word, $request->category);
+        $word->answers->updateAnswer($request->answer, $word->id); 
+
+        $request->session()->flash('status', 'You have update a Word');
+        
+        return redirect(route('word.index'));
     }
 
     /**
@@ -77,8 +94,12 @@ class WordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function destroy(Word $word)
     {
-        //
+        $word->answers->delete();
+        $word->delete();
+
+        return redirect(route('word.index'))->with('status', 'Successfully deleted '.$word->content);
     }
 }
