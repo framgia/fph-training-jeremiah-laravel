@@ -21,7 +21,7 @@
                             @foreach ($roles as $role)
                             <tr>
                                 <td>{{ $role->id }}</td>
-                                <td>{{ $role->role_name }}</td>
+                                <td><a href="{{ route('role.show', $role->id) }}">{{ $role->role_name }}</a></td>
                                 <td>{{ $role->role_description }}</td>
                                 <td>
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target=".myModal{{ $role->id }}">Assign</button>
@@ -35,7 +35,7 @@
                                                     <h4 class="modal-title" id="myModalLabel">Users List</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{ Form::open(['route' => 'assign.role']) }}
+                                                    {{ Form::open(['route' => 'role.assign']) }}
                                                         <input type="text" name="role_id" value="{{ $role->id }}">
                                                         <div>
                                                             <select name="users" class="form-control">
@@ -59,7 +59,7 @@
                     </table>
                 </div>
             </div>
-            <a href="{{ route('roles.add') }}" class="btn btn-lg btn-success pull-right">Add Role</a>
+            <a href="{{ route('role.create') }}" class="btn btn-lg btn-success pull-right">Add Role</a>
         </div>
     </div>
 @endsection

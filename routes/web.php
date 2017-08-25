@@ -22,15 +22,15 @@ Route::prefix('admin')->group(function () {
 	Route::get('/', function () {
 		return view('admin.index');
 	});
-	//link to Roles Page
-	Route::get('roles', 'RoleController@index')->name('roles');
-
-	//link to Add Role Page
-	Route::get('roles/add', 'RoleController@create')->name('roles.add');
-
-	//action that stores role
-	Route::post('store', 'RoleController@store')->name('role.store');
-
-	//action that assign role
-	Route::post('assign', 'RoleController@assign')->name('assign.role');
+	//role routes
+	Route::resource('role', 'RoleController');
+	//role assign
+	Route::get('role/assign', 'RoleController@assign')->name('role.assign');
+	//word routes
+	Route::resource('word', 'WordController');
+	//category routes
+	Route::resource('category', 'CategoryController');
 });
+
+
+
