@@ -7,7 +7,7 @@
                     <img src="/images/prof.png" width="200" height="200" class="img-circle" id="sidebar-image">
                     <span class="col-md-offset-2">Learned Words: 100</span>
                 </li>
-                <li><a href="#">Words</a></li>
+                <li><a href="{{ route('word.index') }}">Words</a></li>
                 <li><a href="{{ route('category.index') }}">Categories</a></li>
                 <li><a href="#">Users</a></li>
                 <li><a href="{{ route('role.index') }}">Roles</a></li>
@@ -18,6 +18,13 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <i class="glyphicon glyphicon-ok-sign left"></i>
+                        <span>{{ session('status') }}</span>
+                    </div>
+                @endif
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
                     <i class="glyphicon glyphicon-menu-hamburger"></i>
                 </a>

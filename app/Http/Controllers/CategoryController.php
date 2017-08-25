@@ -13,8 +13,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Category $category)
-    {   
-        return view('admin.category.index')->with('categories', $category->showCategories());    
+    {        
+        return view('admin.category.index')->with('categories', $categories->all());    
     }
 
     /**
